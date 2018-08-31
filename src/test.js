@@ -1,6 +1,6 @@
 "use strict";
 
-import {timeIsAllowed} from "./background.js";
+import {timeIsAllowed, alwaysAllowed} from "./background.js";
 
 const d0 = new Date("Jan 1 2018 02:59").getTime();
 const d1 = new Date("Jan 1 2018 03:00").getTime();
@@ -68,3 +68,14 @@ expect(timeIsAllowed(d13, t2), true);
 expect(timeIsAllowed(d14, t2), true);
 expect(timeIsAllowed(d15, t2), false);
 expect(timeIsAllowed(d16, t2), false);
+
+
+const a0 = "http://example.com";
+const a1 = "http://example.com/index";
+const a2 = "http://example.com/index/";
+const a3 = "http://example.com/index/subpage";
+const a99 = ["http://example.com/index"];
+expect(alwaysAllowed(a0, a99), false);
+expect(alwaysAllowed(a1, a99), true);
+expect(alwaysAllowed(a2, a99), true);
+expect(alwaysAllowed(a3, a99), true);
