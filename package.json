@@ -1,0 +1,19 @@
+{
+  "name": "requesttimeoutblocker",
+  "version": "1.0.0",
+  "description": "Browser extension to offer time-based site blocking",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LonMcGregor/RequestTimeoutBlocker.git"
+  },
+  "author": "Leon McGregor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LonMcGregor/RequestTimeoutBlocker/issues"
+  },
+  "homepage": "https://github.com/LonMcGregor/RequestTimeoutBlocker#readme"
+}
