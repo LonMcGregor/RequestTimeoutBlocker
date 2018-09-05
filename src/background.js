@@ -1,11 +1,13 @@
 "use strict";
 
-const REDIRECT = {redirectUrl: chrome.runtime.getURL("blocked.html")};
-
 const BLOCKING_MODE = "TIMED";
 const HOURS_AVAILABLE = [
     [7, 10]
 ];
+
+/*export */function redirect(url){
+    return {redirectUrl: chrome.runtime.getURL("blocked.html")+"?block="+url};
+}
 
 /*export */function timeIsAllowed(requestTime, restrictedHours){
     const requestDate = new Date(requestTime);
@@ -31,7 +33,7 @@ function onBeforeRequest(request){
     if(alwaysAllowed(request.url, ALWAYS_ALLOW)){
         return;
     } else if(BLOCKING_MODE === "TIMED" && !timeIsAllowed(request.timeStamp, HOURS_AVAILABLE)){
-        return REDIRECT;
+        return redirect(request.url);
     }
 }
 

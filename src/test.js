@@ -1,6 +1,6 @@
 "use strict";
 
-import {timeIsAllowed, alwaysAllowed} from "./background.js";
+import {timeIsAllowed, alwaysAllowed, redirect} from "./background.js";
 
 const d0 = new Date("Jan 1 2018 02:59").getTime();
 const d1 = new Date("Jan 1 2018 03:00").getTime();
@@ -79,3 +79,11 @@ expect(alwaysAllowed(a0, a99), false);
 expect(alwaysAllowed(a1, a99), true);
 expect(alwaysAllowed(a2, a99), true);
 expect(alwaysAllowed(a3, a99), true);
+
+const blockurl=chrome.runtime.getURL("blocked.html");
+expect(redirect("").redirectUrl, blockurl+"?block=");
+expect(redirect("www.example.com").redirectUrl, blockurl+"?block=www.example.com");
+expect(redirect("https://www.example.com/").redirectUrl, blockurl+"?block=https://www.example.com/");
+expect(redirect("https://www.example.com/page/stuff/index.html").redirectUrl, blockurl+"?block=https://www.example.com/page/stuff/index.html");
+expect(redirect("https://www.example.com/page/stuff/index.html?query=safe&other=stuff").redirectUrl, blockurl+"?block=https://www.example.com/page/stuff/index.html?query=safe&other=stuff");
+expect(redirect("https://www.example.com/page/stuff/index.html?block=uh-oh").redirectUrl, blockurl+"?block=https://www.example.com/page/stuff/index.html?block=uh-oh");
