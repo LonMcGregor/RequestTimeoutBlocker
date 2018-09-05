@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/LonMcGregor/RequestTimeoutBlocker.git"
   },
+  "scripts": {
+    "fx": "cd src && C:\\PROGRA~1\\7-Zip\\7z.exe a ..\\RequestTimeoutBlocker.xpi *"
+  },
   "author": "Leon McGregor",
   "license": "MIT",
   "bugs": {

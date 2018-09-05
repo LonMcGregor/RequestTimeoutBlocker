@@ -3,14 +3,29 @@
     "name": "Request Timeout Blocker",
     "version": "1.0.0",
     "author": "Léon McGregor",
+    "description": "Time Based Request Blocker",
+    "homepage_url": "https://github.com/LonMcGregor/RequestTimeoutBlocker",
+
+    "applications": {
+        "gecko": {
+            "id": "{29ff373b-3e69-4e00-8b43-4b347b49c106}",
+            "strict_min_version": "45.0"
+        }
+    },
+
     "permissions": [
         "webRequest",
         "webRequestBlocking",
         "*://*.reddit.com/*",
         "*://*.twitter.com/*"
     ],
+
     "background": {
         "scripts": ["background.js"],
         "persistent": true
-    }
+    },
+
+    "web_accessible_resources": [
+        "blocked.html"
+    ]
 }

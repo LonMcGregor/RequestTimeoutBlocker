@@ -4,8 +4,7 @@ const REDIRECT = {redirectUrl: chrome.runtime.getURL("blocked.html")};
 
 const BLOCKING_MODE = "TIMED";
 const HOURS_AVAILABLE = [
-    [8, 10],
-    [17, 18]
+    [7, 10]
 ];
 
 /*export */function timeIsAllowed(requestTime, restrictedHours){
